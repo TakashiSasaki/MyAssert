@@ -1,4 +1,4 @@
-assert= require("assert");
+assert = require("assert");
 
 assert.isInstanceOf = function(actual, expect) {
   if(actual instanceof expect) return;
