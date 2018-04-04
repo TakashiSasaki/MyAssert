@@ -3,7 +3,9 @@
 test: assert.js
 	node test.js
 
-BROWSERIFIED=browserified.js browserified-standalone.js browserified-target.js browserified-require.js
+BROWSERIFIED=browserified.js browserified-target.js browserified-require.js \
+						 browserified-standalone.js browserified-standalone-target.js browserified-standalone-require.js
+
 
 clean:
 	@rm -rf $(BROWSERIFIED)
@@ -14,32 +16,24 @@ assert.js: myassert.js
 	rm empty.js
 
 prepare:
-	sudo npm -g install browserify
+	sudo npm -g install browserify js-beautify js-prettify
 
-browserified:  clean browserified-require.js browserified-target.js browserified-standalone-require.js browserified-standalone-target.js browserified-standalone.js browserified.js
+browserified:  clean $(BROWSERIFIED)
 
 browserified-require.js: hello.js
-	touch empty.js ;\
-		browserify -r ./$< -o $@ empty.js; \
-		rm empty.js
+	browserify -r ./$< -o $@ empty.js
 
 browserified-target.js: hello.js
-	touch empty.js ;\
-		browserify -r ./$<:target -o $@ empty.js; \
-		rm empty.js
+	browserify -r ./$<:target -o $@ empty.js
 
 browserified-standalone-require.js: hello.js
-	touch empty.js ;\
-		browserify -s hello -r ./$< -o $@ empty.js; \
-		rm empty.js
+	browserify -s greeting -r ./$< -o $@ empty.js
 
 browserified-standalone-target.js: hello.js
-	touch empty.js ;\
-		browserify -s hello -r ./$<:target -o $@ empty.js; \
-		rm empty.js
+	browserify -s greeting -r ./$<:target -o $@ empty.js
 
 browserified-standalone.js: hello.js goodbye.js
-	browserify -s hello -o $@ $^
+	browserify -s greeting -o $@ $^
 
 browserified.js: hello.js goodbye.js
 	browserify -o $@ $^
