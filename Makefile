@@ -3,6 +3,11 @@
 test: assert.js
 	node test.js
 
+BROWSERIFIED=browserified.js browserified-standalone.js browserified-target.js browserified-require.js
+
+clean:
+	@rm -rf $(BROWSERIFIED)
+
 assert.js: myassert.js
 	touch empty.js ;\
 	browserify -s assert -r ./myassert -o $@ empty.js ;\
@@ -11,7 +16,7 @@ assert.js: myassert.js
 prepare:
 	sudo npm -g install browserify
 
-browserified:  browserified-require.js browserified-target.js browserified-standalone-require.js browserified-standalone-target.js browserified-standalone.js browserified.js
+browserified:  clean browserified-require.js browserified-target.js browserified-standalone-require.js browserified-standalone-target.js browserified-standalone.js browserified.js
 
 browserified-require.js: hello.js
 	touch empty.js ;\
@@ -33,10 +38,10 @@ browserified-standalone-target.js: hello.js
 		browserify -s hello -r ./$<:target -o $@ empty.js; \
 		rm empty.js
 
-browserified-standalone.js: hello.js
-	browserify -s hello -o $@ $<
+browserified-standalone.js: hello.js goodbye.js
+	browserify -s hello -o $@ $^
 
-browserified.js: hello.js
-	browserify -o $@ $<
+browserified.js: hello.js goodbye.js
+	browserify -o $@ $^
 
 

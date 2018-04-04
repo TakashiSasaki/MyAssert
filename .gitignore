@@ -1,3 +1,5 @@
 .Makefile.swp
 .test.js.swp
 assert.js
+.goodbye.js.swp
+.hello.js.swp
