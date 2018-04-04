@@ -47,6 +47,18 @@
         1: [function(require, module, exports) {
             if (typeof Logger === "undefined") Logger = console;
 
+            function goodbye() {
+                Logger.log("goodbye");
+            }
+            if (typeof exports === "undefined") exports = {};
+            exports.goodbye = goodbye;
+
+
+
+        }, {}],
+        2: [function(require, module, exports) {
+            if (typeof Logger === "undefined") Logger = console;
+
             function hello() {
                 Logger.log("hello");
             }
@@ -56,5 +68,5 @@
 
 
         }, {}]
-    }, {}, [1])(1)
+    }, {}, [2, 1])(2)
 });
