@@ -1,4 +1,4 @@
-(function() {
+require = (function() {
     function r(e, n, t) {
         function o(i, f) {
             if (!n[i]) {
@@ -26,6 +26,11 @@
 })()({
     1: [
         function(require, module, exports) {
+
+        }, {}
+    ],
+    "goodbyetarget": [
+        function(require, module, exports) {
             if (typeof Logger === "undefined") Logger = console;
 
             function goodbye() {
@@ -38,7 +43,7 @@
 
         }, {}
     ],
-    2: [
+    "hellotarget": [
         function(require, module, exports) {
             if (typeof Logger === "undefined") Logger = console;
 
@@ -52,4 +57,4 @@
 
         }, {}
     ]
-}, {}, [2, 1]);
+}, {}, [1]);

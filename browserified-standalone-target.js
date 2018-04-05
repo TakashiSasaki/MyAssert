@@ -46,6 +46,11 @@
     })()({
         1: [
             function(require, module, exports) {
+
+            }, {}
+        ],
+        "goodbyetarget": [
+            function(require, module, exports) {
                 if (typeof Logger === "undefined") Logger = console;
 
                 function goodbye() {
@@ -58,7 +63,7 @@
 
             }, {}
         ],
-        2: [
+        "hellotarget": [
             function(require, module, exports) {
                 if (typeof Logger === "undefined") Logger = console;
 
@@ -72,5 +77,5 @@
 
             }, {}
         ]
-    }, {}, [2, 1])(2)
+    }, {}, [1])("hellotarget")
 });
