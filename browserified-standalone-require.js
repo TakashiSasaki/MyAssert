@@ -44,6 +44,20 @@
         }
         return r
     })()({
+        "/goodbye.js": [
+            function(require, module, exports) {
+                if (typeof Logger === "undefined") Logger = console;
+
+                function goodbye() {
+                    Logger.log("goodbye");
+                }
+                if (typeof exports === "undefined") exports = {};
+                exports.goodbye = goodbye;
+                goodbye();
+
+
+            }, {}
+        ],
         "/hello.js": [
             function(require, module, exports) {
                 if (typeof Logger === "undefined") Logger = console;

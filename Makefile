@@ -23,20 +23,20 @@ prepare:
 
 browserified:  clean $(BROWSERIFIED)
 
-browserified-require.js: hello.js
-	browserify -r ./$< -o tmp.js empty.js ;\
+browserified-require.js: hello.js goodbye.js
+	browserify -r ./hello.js -r ./goodbye.js -o tmp.js empty.js ;\
 	 	js-beautify -f tmp.js -o $@
 
-browserified-target.js: hello.js
-	browserify -r ./$<:target -o tmp.js empty.js ;\
+browserified-target.js: hello.js goodbye.js
+	browserify -r ./hello.js:hello-target ./goodbye.js:goodbye-target -o tmp.js empty.js ;\
 	 	js-beautify -f tmp.js -o $@
 
-browserified-standalone-require.js: hello.js
-	browserify -s greeting -r ./$< -o tmp.js empty.js ;\
+browserified-standalone-require.js: hello.js goodbye.js
+	browserify -s greeting -r ./hello.js -r ./goodbye.js -o tmp.js empty.js ;\
 	 	js-beautify -f tmp.js -o $@
 
-browserified-standalone-target.js: hello.js
-	browserify -s greeting -r ./$<:target -o tmp.js empty.js ;\
+browserified-standalone-target.js: hello.js goodbye.js
+	browserify -s greeting -r ./hello.js:hello-target ./goodbye.js: -o tmp.js empty.js ;\
 	 	js-beautify -f tmp.js -o $@
 
 browserified-standalone.js: hello.js goodbye.js
