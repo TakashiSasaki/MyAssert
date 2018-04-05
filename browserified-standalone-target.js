@@ -46,10 +46,19 @@
     })()({
         1: [
             function(require, module, exports) {
+                if (typeof Logger === "undefined") Logger = console;
+
+                function goodbye() {
+                    Logger.log("goodbye");
+                }
+                if (typeof exports === "undefined") exports = {};
+                exports.goodbye = goodbye;
+                goodbye();
+
 
             }, {}
         ],
-        "target": [
+        2: [
             function(require, module, exports) {
                 if (typeof Logger === "undefined") Logger = console;
 
@@ -63,5 +72,5 @@
 
             }, {}
         ]
-    }, {}, [1])("target")
+    }, {}, [2, 1])(2)
 });
