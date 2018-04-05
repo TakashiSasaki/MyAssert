@@ -4,5 +4,5 @@ function goodbye() {
 }
 if(typeof exports === "undefined") exports = {};
 exports.goodbye = goodbye;
-
+goodbye();
 

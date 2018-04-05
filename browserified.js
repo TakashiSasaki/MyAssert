@@ -33,7 +33,7 @@
             }
             if (typeof exports === "undefined") exports = {};
             exports.goodbye = goodbye;
-
+            goodbye();
 
 
         }, {}
@@ -47,7 +47,7 @@
             }
             if (typeof exports === "undefined") exports = {};
             exports.hello = hello;
-
+            hello();
 
 
         }, {}

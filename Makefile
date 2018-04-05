@@ -1,5 +1,8 @@
 .PHONY: test prepare browserified
 
+all: browserified test
+	@rm -rf tmp.js
+
 test: assert.js
 	node test.js
 
@@ -8,7 +11,7 @@ BROWSERIFIED=browserified.js browserified-target.js browserified-require.js \
 
 
 clean:
-	@rm -rf $(BROWSERIFIED)
+	@rm -rf $(BROWSERIFIED) tmp.js
 
 assert.js: myassert.js
 	touch empty.js ;\

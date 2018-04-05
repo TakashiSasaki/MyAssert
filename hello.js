@@ -4,5 +4,5 @@ function hello() {
 }
 if(typeof exports === "undefined") exports = {};
 exports.hello = hello;
-
+hello();
 
