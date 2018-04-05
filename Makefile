@@ -1,6 +1,6 @@
 .PHONY: test prepare browserified
 
-all: browserified test
+all: browserified assert.js test
 	@rm -rf tmp.js
 
 test: assert.js
@@ -21,7 +21,7 @@ assert.js: myassert.js
 prepare:
 	sudo npm -g install browserify js-beautify js-prettify
 
-browserified:  clean $(BROWSERIFIED)
+browserified:  $(BROWSERIFIED)
 
 browserified-require.js: hello.js goodbye.js
 	browserify -r ./hello.js -r ./goodbye.js -o tmp.js empty.js ;\
