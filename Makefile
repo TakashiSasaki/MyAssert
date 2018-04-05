@@ -19,7 +19,9 @@ assert.js: myassert.js
 	rm empty.js
 
 prepare:
-	sudo npm -g install browserify js-beautify js-prettify
+	sudo n stable ;\
+		sudo npm -g update ;\
+		sudo npm -g install browserify js-beautify js-prettify @google/clasp
 
 browserified:  $(BROWSERIFIED)
 
