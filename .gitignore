@@ -5,3 +5,4 @@ assert.js
 .hello.js.swp
 tmp.js
 .Makefile.swo
+.claspignore.swp
