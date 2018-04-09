@@ -29,30 +29,43 @@ require = (function() {
 
         }, {}
     ],
-    "goodbyetarget": [
+    "goodbye": [
         function(require, module, exports) {
             if (typeof Logger === "undefined") Logger = console;
+            Logger.log("goodbye.js starts.");
+            Logger.log("typeof require = " + typeof require);
+            Logger.log("typeof module = " + typeof module);
+            Logger.log("Object.keys(module) = " + Object.keys(module));
+            Logger.log("typeof exports = " + typeof exports);
+            Logger.log("Object.keys(exports) = " + Object.keys(exports));
 
             function goodbye() {
                 Logger.log("goodbye");
             }
             if (typeof exports === "undefined") exports = {};
             exports.goodbye = goodbye;
-            goodbye();
-
+            //goodbye();
+            Logger.log("goodbye.js ends.");
 
         }, {}
     ],
-    "hellotarget": [
+    "hello": [
         function(require, module, exports) {
             if (typeof Logger === "undefined") Logger = console;
+            Logger.log("hello.js starts.");
+            Logger.log("typeof require = " + typeof require);
+            Logger.log("typeof module = " + typeof module);
+            Logger.log("Object.keys(module) = " + Object.keys(module));
+            Logger.log("typeof exports = " + typeof exports);
+            Logger.log("Object.keys(exports) = " + Object.keys(exports));
 
             function hello() {
                 Logger.log("hello");
             }
             if (typeof exports === "undefined") exports = {};
             exports.hello = hello;
-            hello();
+            //hello();
+            Logger.log("hello.js ends");
 
 
         }, {}

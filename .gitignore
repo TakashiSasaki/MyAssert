@@ -6,3 +6,6 @@ assert.js
 tmp.js
 .Makefile.swo
 .claspignore.swp
+.bood.swp
+.gree.swp
+.Code.js.swp
