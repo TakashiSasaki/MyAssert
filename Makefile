@@ -4,7 +4,7 @@ NODEPATH=$(NODE_PATH):.
 all: browserified assert.js test
 	@rm -rf tmp.js
 
-test: assert.js
+test: 
 	NODE_PATH=$(NODEPATH) node test.js
 
 BROWSERIFIED=browserified.js browserified-target.js browserified-require.js \
