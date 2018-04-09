@@ -1,4 +1,4 @@
-.PHONY: test prepare browserified
+.PHONY: test prepare browserified push pull
 
 all: browserified assert.js test
 	@rm -rf tmp.js
@@ -9,6 +9,11 @@ test: assert.js
 BROWSERIFIED=browserified.js browserified-target.js browserified-require.js \
 						 browserified-standalone.js browserified-standalone-target.js browserified-standalone-require.js
 
+push:
+	clasp push
+
+pull:
+	clasp pull
 
 clean:
 	@rm -rf $(BROWSERIFIED) tmp.js
