@@ -7,7 +7,8 @@ test: assert.js
 	node test.js
 
 BROWSERIFIED=browserified.js browserified-target.js browserified-require.js \
-						 browserified-standalone.js browserified-standalone-target.js browserified-standalone-require.js
+						 browserified-standalone.js browserified-standalone-target.js browserified-standalone-require.js \
+						 assert.js
 
 push: browserified
 	clasp push
@@ -19,9 +20,8 @@ clean:
 	@rm -rf $(BROWSERIFIED) tmp.js
 
 assert.js: myassert.js
-	touch empty.js ;\
-	browserify -s assert -r ./myassert -o $@ empty.js ;\
-	rm empty.js
+	browserify -r ./myassert.js:assert -o tmp.js empty.js ;\
+		js-beautify -f tmp.js -o $@
 
 prepare:
 	sudo n stable ;\
