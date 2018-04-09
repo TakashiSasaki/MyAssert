@@ -1,7 +1,7 @@
 # MyAssert
 
-This node is basically identical to standard assert module provideded with nodejs.
-I added some extra test functions to assert object and make it available for both nodejs and Google Apps Script (GAS).
+MyAssert is a JavaScript code almost identical to default `assert` module provideded with NodeJS.
+I added some extra test functions to it and make `assert` available in both NodeJS and Google Apps Script (GAS).
 
 # Use in Google Apps Script (GAS)
 Upload `myassert-browserify.js` to your GAS project and import it by `require` function.
@@ -20,5 +20,5 @@ If you add current cirectory to `NODE_PATH` environment variables, you can impor
 var assert = require("myassert");
 ```
 ```sh
-$ NODE_PATH=$NODE_PATH:. node yourscript.js
+NODE_PATH=$NODE_PATH:. node yourscript.js
 ```
