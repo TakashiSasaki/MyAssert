@@ -9,7 +9,7 @@ Upload `myassert-browserify.js` to your GAS project and import it by `require` f
 var assert = require("myassert");
 ```
 
-# Use in nodejs
+# Use in NodeJS
 Copy `myassert.js` to your directory and import it by `require` function.
 
 ```yournodescript.js
