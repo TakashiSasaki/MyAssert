@@ -6,7 +6,7 @@ hello.js
 goodbye.js
 tmp.js
 browserified.js
-#browserified-target.js
+browserified-target.js
 browserified-require.js
 browserified-standalone.js
 browserified-standalone-target.js
