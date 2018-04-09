@@ -1,34 +1,41 @@
-.PHONY: test prepare browserified
+.PHONY: test prepare browserified push pull 
 
-all: browserified test
+all: browserified assert.js test
 	@rm -rf tmp.js
 
 test: assert.js
 	node test.js
 
 BROWSERIFIED=browserified.js browserified-target.js browserified-require.js \
-						 browserified-standalone.js browserified-standalone-target.js browserified-standalone-require.js
+						 browserified-standalone.js browserified-standalone-target.js browserified-standalone-require.js \
+						 assert.js
 
+push: browserified
+	clasp push
+
+pull:
+	clasp pull
 
 clean:
 	@rm -rf $(BROWSERIFIED) tmp.js
 
 assert.js: myassert.js
-	touch empty.js ;\
-	browserify -s assert -r ./myassert -o $@ empty.js ;\
-	rm empty.js
+	browserify -r ./myassert.js:assert -o tmp.js empty.js ;\
+		js-beautify -f tmp.js -o $@
 
 prepare:
-	sudo npm -g install browserify js-beautify js-prettify
+	sudo n stable ;\
+		sudo npm -g update ;\
+		sudo npm -g install browserify js-beautify js-prettify @google/clasp
 
-browserified:  clean $(BROWSERIFIED)
+browserified:  $(BROWSERIFIED)
 
 browserified-require.js: hello.js goodbye.js
 	browserify -r ./hello.js -r ./goodbye.js -o tmp.js empty.js ;\
 	 	js-beautify -f tmp.js -o $@
 
 browserified-target.js: hello.js goodbye.js
-	browserify -r ./hello.js:hello-target ./goodbye.js:goodbye-target -o tmp.js empty.js ;\
+	browserify -r ./hello.js:hello -r ./goodbye.js:goodbye -o tmp.js empty.js ;\
 	 	js-beautify -f tmp.js -o $@
 
 browserified-standalone-require.js: hello.js goodbye.js
@@ -36,7 +43,7 @@ browserified-standalone-require.js: hello.js goodbye.js
 	 	js-beautify -f tmp.js -o $@
 
 browserified-standalone-target.js: hello.js goodbye.js
-	browserify -s greeting -r ./hello.js:hello-target ./goodbye.js: -o tmp.js empty.js ;\
+	browserify -s greeting -r ./hello.js:hello -r ./goodbye.js:goodbye -o tmp.js empty.js ;\
 	 	js-beautify -f tmp.js -o $@
 
 browserified-standalone.js: hello.js goodbye.js
