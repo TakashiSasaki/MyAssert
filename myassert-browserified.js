@@ -1385,9 +1385,9 @@ require = (function() {
         function(require, module, exports) {
             var assert = require("assert");
 
-            assert.isInstanceOf = function(actual, expect) {
-                if (actual instanceof expect) return;
-                assert.fail(actual.constructor.name.expect.constructor.name, "", "instanceof");
+            assert.isInstanceOf = function(actual, expected) {
+                if (actual instanceof expected) return;
+                assert.fail(actual.constructor.name.expected.constructor.name, "", "instanceof");
             }
 
             assert.isString = function(actual) {
