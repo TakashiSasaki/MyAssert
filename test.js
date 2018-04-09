@@ -24,7 +24,9 @@ console.log(x);
 
 console.log(process.env['NODE_PATH']);
 var assert = require("myassert");
+
 assert.isString("abc");
 assert.isObject({});
 assert.throws(()=>{assert.isString(1)},assert.AssertionError);
+assert.isStringArray(["ab", "cd"]);
 
