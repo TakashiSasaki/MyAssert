@@ -20,8 +20,8 @@ pull:
 clean:
 	@rm -rf $(BROWSERIFIED) tmp.js assert.js
 
-myassert-browserified.js: myassert.src.js
-	browserify -r ./myassert.src.js:myassert -o tmp.js empty.js ;\
+myassert-browserified.js: myassert.js
+	browserify -r ./myassert.js:myassert -o tmp.js empty.js ;\
 		js-beautify -f tmp.js -o $@
 
 prepare:

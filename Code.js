@@ -8,7 +8,7 @@ function test() {
 	Logger.log("typeof goodbye = " + typeof goodbye);
 	goodbye.goodbye();
 
-	assert = require("assert");
+	var assert = require("myassert");
 	assert.isString("abc");
 
 }//test
