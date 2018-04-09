@@ -1,14 +1,15 @@
 .PHONY: test prepare browserified push pull 
+NODEPATH=$(NODE_PATH):.
 
 all: browserified assert.js test
 	@rm -rf tmp.js
 
-test: assert.js
-	node test.js
+test: 
+	NODE_PATH=$(NODEPATH) node test.js
 
 BROWSERIFIED=browserified.js browserified-target.js browserified-require.js \
 						 browserified-standalone.js browserified-standalone-target.js browserified-standalone-require.js \
-						 assert.js
+						 myassert-browserified.js
 
 push: browserified
 	clasp push
@@ -17,10 +18,10 @@ pull:
 	clasp pull
 
 clean:
-	@rm -rf $(BROWSERIFIED) tmp.js
+	@rm -rf $(BROWSERIFIED) tmp.js assert.js
 
-assert.js: myassert.js
-	browserify -r ./myassert.js:assert -o tmp.js empty.js ;\
+myassert-browserified.js: myassert.js
+	browserify -r ./myassert.js:myassert -o tmp.js empty.js ;\
 		js-beautify -f tmp.js -o $@
 
 prepare:

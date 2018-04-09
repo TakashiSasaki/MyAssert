@@ -1,6 +1,7 @@
 Makefile
 test.js
 myassert.js
+assert.js
 empty.js
 hello.js
 goodbye.js

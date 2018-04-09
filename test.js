@@ -22,7 +22,8 @@ console.log("requiring browserified-standalone-require.js");
 var x = require("./browserified-standalone-require.js");
 console.log(x);
 
-if(typeof assert === "undefined") require("./assert");
+console.log(process.env['NODE_PATH']);
+var assert = require("myassert");
 assert.isString("abc");
 assert.isObject({});
 assert.throws(()=>{assert.isString(1)},assert.AssertionError);
