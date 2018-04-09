@@ -1,11 +1,11 @@
 .PHONY: test prepare browserified push pull 
-NODEPATH=$(NODE_PATH):.
+NODE=NODE_PATH=$(NODE_PATH):. node
 
 all: browserified assert.js test
 	@rm -rf tmp.js
 
 test: 
-	NODE_PATH=$(NODEPATH) node test.js
+	$(NODE) test.js
 
 BROWSERIFIED=browserified.js browserified-target.js browserified-require.js \
 						 browserified-standalone.js browserified-standalone-target.js browserified-standalone-require.js \
