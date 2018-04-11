@@ -1,4 +1,4 @@
-if(typeof assert === "undefined") require("myassert");
+if(typeof assert === "undefined") require("myassert-browserified");
 
 function testMyAssert(){
   console.log("testMyAssert");

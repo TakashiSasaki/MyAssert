@@ -1,4 +1,4 @@
-var assert = require("assert");
+if(typeof assert === "undefined") assert = require("assert");
 
 assert.isInstanceOf = function(actual, expected) {
   if(actual instanceof expected) return;
@@ -68,4 +68,5 @@ assert.isPositiveInteger = function(x) {
 
 //if(typeof exports === "undefined") exports = {};
 //exports.assert = assert;
-module.exports = assert;
+if(typeof module === "object") module.exports = assert;
+
