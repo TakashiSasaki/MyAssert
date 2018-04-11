@@ -26,8 +26,13 @@ require = (function() {
 })()({
     1: [
         function(require, module, exports) {
+            assert = require("./myassert");
+            if (typeof module === "object") module.exports = assert;
 
-        }, {}
+
+        }, {
+            "./myassert": "myassert"
+        }
     ],
     2: [
         function(require, module, exports) {

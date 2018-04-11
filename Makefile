@@ -17,10 +17,10 @@ pull:
 	clasp pull
 
 clean:
-	@rm -rf $(BROWSERIFIED) tmp.js 
+	@rm -rf $(BROWSERIFIED) tmp.js myassert-browserified.js
 
 myassert-browserified.js: myassert.js
-	browserify -r ./myassert.js:myassert -o tmp.js empty.js ;\
+	browserify -r ./myassert.js:myassert -o tmp.js myassert-stub.js;\
 		js-beautify -f tmp.js -o $@
 
 prepare:
