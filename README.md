@@ -15,7 +15,7 @@ Copy `myassert.js` to your directory and import it by `require` function.
 ```yournodescript.js
 var assert = require("./myassert.js");
 ```
-If you add current cirectory to `NODE_PATH` environment variables, you can import it in the same manner as above.
+If you've add current directory to `NODE_PATH` environment variables, you can import it in the same manner as above.
 ```yournodescript.js
 var assert = require("myassert");
 ```

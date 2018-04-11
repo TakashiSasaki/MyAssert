@@ -1,15 +1,16 @@
-.PHONY: test prepare browserified push pull 
-NODEPATH=$(NODE_PATH):.
+.PHONY: test prepare browserified push pull clean all
+NODE=NODE_PATH=$(NODE_PATH):. node
 
-all: browserified assert.js test
+all: myassert.js test 
 	@rm -rf tmp.js
 
-test: 
-	NODE_PATH=$(NODEPATH) node test.js
+test: testMyAssert
+
+testMyAssert: myassert.js
+	$(NODE) testMyAssert.js
 
 BROWSERIFIED=browserified.js browserified-target.js browserified-require.js \
-						 browserified-standalone.js browserified-standalone-target.js browserified-standalone-require.js \
-						 myassert-browserified.js
+						 browserified-standalone.js browserified-standalone-target.js browserified-standalone-require.js 
 
 push: browserified
 	clasp push
@@ -18,10 +19,10 @@ pull:
 	clasp pull
 
 clean:
-	@rm -rf $(BROWSERIFIED) tmp.js assert.js
+	@rm -rf $(BROWSERIFIED) tmp.js myassert.js
 
-myassert-browserified.js: myassert.js
-	browserify -r ./myassert.js:myassert -o tmp.js empty.js ;\
+myassert.js: myassert-main.js myassert-stub.js
+	browserify -r ./myassert-main.js:myassert -o tmp.js myassert-stub.js;\
 		js-beautify -f tmp.js -o $@
 
 prepare:
@@ -55,4 +56,9 @@ browserified.js: hello.js goodbye.js
 	browserify -o tmp.js $^ ;\
 	 	js-beautify -f tmp.js -o $@
 
+merge:
+	git merge github/SurfacePro4 ;\
+		git merge github/SurfacePro5 ;\
+		git merge github/sasaki64 ;\
+		git merge github/master
 
