@@ -2,3 +2,9 @@
 /*.swo
 assert.js
 tmp.js
+browserified-require.js
+browserified-standalone.js
+browserified-standalone-require.js
+browserified-standalone-target.js
+browserified.js
+browserified-target.js
