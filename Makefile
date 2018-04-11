@@ -1,10 +1,10 @@
 .PHONY: test prepare browserified push pull clean all
 NODE=NODE_PATH=$(NODE_PATH):. node
 
-all: myassert-browserified.js 
+all: myassert.js 
 	@rm -rf tmp.js
 
-test: myassert-browserified.js
+test: myassert.js
 	$(NODE) test.js
 
 BROWSERIFIED=browserified.js browserified-target.js browserified-require.js \
