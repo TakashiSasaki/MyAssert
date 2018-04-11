@@ -19,7 +19,7 @@ pull:
 	clasp pull
 
 clean:
-	@rm -rf $(BROWSERIFIED) tmp.js myassert-browserified.js
+	@rm -rf $(BROWSERIFIED) tmp.js myassert-browserified.js myassert.js
 
 myassert-browserified.js: myassert-main.js
 	browserify -o tmp.js myassert-main.js;\
