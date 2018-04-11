@@ -54,3 +54,9 @@ browserified.js: hello.js goodbye.js
 	browserify -o tmp.js $^ ;\
 	 	js-beautify -f tmp.js -o $@
 
+merge:
+	git merge github/SurfacePro4 ;\
+		git merge github/SurfacePro5 ;\
+		git merge github/sasaki64 ;\
+		git merge github/master
+
