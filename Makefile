@@ -18,6 +18,9 @@ push: browserified
 pull:
 	clasp pull
 
+publish:
+	npm publish
+
 clean:
 	@rm -rf $(BROWSERIFIED) tmp.js myassert-browserified.js myassert.js
 

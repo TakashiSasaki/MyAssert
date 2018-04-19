@@ -1,0 +1,22 @@
+{
+  "name": "myassert",
+  "version": "0.0.2",
+  "description": "added some methods to vanilla assert module",
+  "main": "myassert-main.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TakashiSasaki/MyAssert.git"
+  },
+  "keywords": [
+    "assert"
+  ],
+  "author": "Takashi SASAKI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TakashiSasaki/MyAssert/issues"
+  },
+  "homepage": "https://github.com/TakashiSasaki/MyAssert#readme"
+}
