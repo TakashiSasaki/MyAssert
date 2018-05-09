@@ -40,6 +40,9 @@ function testMyAssert(){
   assert.isUint16Array(new Uint16Array([-1,-2,-3,-4]));
   assert.throws(()=>{assert.isUint16Array([70000, -1])}, assert.AssertionError);
 
+  assert.isInt16Array([1,2,3,4]);
+  assert.isInt16Array(new Int16Array([-40000, 40000]));
+  assert.throws(()=>{assert.isInt16Array([-40000, 40000])}, assert.AssertionError);
 }//testMyAssert
 
 if(typeof process !== "undefined") {

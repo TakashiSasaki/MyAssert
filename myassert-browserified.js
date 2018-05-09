@@ -115,7 +115,7 @@
                 if (x.constructor.name === "Uint8Array") return;
                 if (x.constructor.name === "Uint8ClampedArray") return;
                 x.forEach(function(value, index, array) {
-                    if (value > 255) assert.fail("" + value + " is larger than 255 which does not fit to 8bit unsigned integer.");
+                    if (value > 255) assert.fail("" + value + " is greater than 255 which does not fit to 8bit unsigned integer.");
                     if (value < 0) assert.fail("" + value + " is negative which does not fit to 8bit unsigned integer.");
                 });
             } //assert.isUint8Array
@@ -124,8 +124,8 @@
                 assert.isArray(actual);
                 if (actual.constructor.name === "Int8Array") return;
                 actual.forEach(function(value, index, array) {
-                    if (value < -128) assert.fail("" + value + " is lesser than -128 which does not fit to 8bit signed integer.");
-                    if (value > 127) assert.fail("" + value + " is lesser than -128 which does not fit to 8bit signed integer.");
+                    if (value < -128) assert.fail("" + value + " is less than -128 which does not fit to 8bit signed integer.");
+                    if (value > 127) assert.fail("" + value + " is less than -128 which does not fit to 8bit signed integer.");
                 });
             } //assert.isInt8Array
 
@@ -133,11 +133,19 @@
                 assert.isArray(actual);
                 if (actual.constructor.name === "Uint16Array") return;
                 actual.forEach(function(value, index, array) {
-                        if (value < 0) assert.fail("" + value + " is negative which does not fit to 16bit unsigned integer.");
-                        if (value > 65535) assert.fail("" + value + " is greater than 65535 which does not fit to 16bit unsigned integer.");
-                    } //forEach
-                );
+                    if (value < 0) assert.fail("" + value + " is negative which does not fit to 16bit unsigned integer.");
+                    if (value > 65535) assert.fail("" + value + " is greater than 65535 which does not fit to 16bit unsigned integer.");
+                }); //forEach
             } //assert.isUint16Array
+
+            assert.isInt16Array = function(actual) {
+                assert.isArray(actual);
+                if (actual.constructor.name === "Int16Array") return;
+                actual.forEach(function(value, index, array) {
+                    if (value < -32768) assert.fail("" + value + " is less than -32768 which does not fit to 16bit signed integer.");
+                    if (value > 32768) assert.fail("" + value + "is greater than 32768 which does not fit to 16bit signed integer.");
+                }); //forEach
+            } //assert.isInt16Array
 
 
             //if(typeof exports === "undefined") exports = {};
