@@ -36,6 +36,9 @@ function testMyAssert(){
   assert.isInt8Array(new Int8Array([-129, 128]));
   assert.throws(()=>{assert.isInt8Array([-129, 128])}, assert.AssertionError);
 
+  assert.isUint16Array([1,2,3,4]);
+  assert.isUint16Array(new Uint16Array([-1,-2,-3,-4]));
+  assert.throws(()=>{assert.isUint16Array([70000, -1])}, assert.AssertionError);
 
 }//testMyAssert
 

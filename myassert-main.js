@@ -99,7 +99,17 @@ assert.isInt8Array = function(actual){
     if(value < -128) assert.fail("" + value + " is lesser than -128 which does not fit to 8bit signed integer.");
     if(value > 127 ) assert.fail("" + value + " is lesser than -128 which does not fit to 8bit signed integer.");
   });
-}//isInt8Array
+}//assert.isInt8Array
+
+assert.isUint16Array = function(actual) {
+  assert.isArray(actual);
+  if(actual.constructor.name === "Uint16Array") return;
+  actual.forEach(function(value,index,array){
+    if(value < 0) assert.fail("" + value + " is negative which does not fit to 16bit unsigned integer.");
+    if(value > 65535) assert.fail("" + value + " is greater than 65535 which does not fit to 16bit unsigned integer.");
+  }//forEach
+  );
+}//assert.isUint16Array
 
 
 //if(typeof exports === "undefined") exports = {};
