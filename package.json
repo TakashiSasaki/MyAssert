@@ -1,6 +1,6 @@
 {
   "name": "myassert",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "added some methods to vanilla assert module",
   "main": "myassert-main.js",
   "scripts": {
@@ -20,3 +20,4 @@
   },
   "homepage": "https://github.com/TakashiSasaki/MyAssert#readme"
 }
+
