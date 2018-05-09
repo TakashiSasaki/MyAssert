@@ -27,13 +27,20 @@ function testMyAssert(){
   assert.isPositiveIntegerArray(new Uint8Array([1,2,3]));
   assert.isPositiveIntegerArray(new Uint8Array([-1,-2,-3]));
 
-  assert.isUint8IntegerArray([0,1,2,3]);
-  assert.throws(()=>{assert.isUint8IntegerArray([-1,0,1,2,3])}, assert.AssertionError);
-  assert.isUint8IntegerArray(new Uint8Array([-1,0,1,2,3]));
-}
+  assert.isUint8Array([0,1,2,3]);
+  assert.throws(()=>{assert.isUint8Array([-1,0,1,2,3])}, assert.AssertionError);
+  assert.isUint8Array(new Uint8Array([-1,0,1,2,3]));
+
+  assert.isInt8Array([0,1,2,3]);
+  assert.isInt8Array(new Int8Array([0,1,2,3]));
+  assert.isInt8Array(new Int8Array([-129, 128]));
+  assert.throws(()=>{assert.isInt8Array([-129, 128])}, assert.AssertionError);
+
+
+}//testMyAssert
 
 if(typeof process !== "undefined") {
   testMyAssert();
-}
+}//if
 
 
