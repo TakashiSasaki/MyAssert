@@ -66,6 +66,13 @@ assert.isPositiveInteger = function(x) {
   if(x <= 0) assert.fail("" + x + " is not a positive integer.");
 }//assert.isPositiveInteger
 
+assert.isPositiveIntegerArray = function(x){
+  assert.isArray(x);
+  x.forEach(function(value,index,array){
+    assert.isPositiveInteger(value);
+  });
+}//assert.isPositiveIntegerArray
+
 //if(typeof exports === "undefined") exports = {};
 //exports.assert = assert;
 if(typeof module === "object") module.exports = assert;
