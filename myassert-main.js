@@ -11,7 +11,16 @@ assert.isString = function(actual) {
 }//assert.isString
 
 assert.isArray = function(actual){
-  if(actual instanceof Array) return;
+  if(actual instanceof Array) return true;
+  if(actual instanceof Int8Array) return true;
+  if(actual instanceof Uint8Array) return true;
+  if(actual instanceof Uint8ClampedArray) return true;
+  if(actual instanceof Int16Array) return true;
+  if(actual instanceof Uint16Array) return true;
+  if(actual instanceof Int32Array) return true;
+  if(actual instanceof Uint32Array) return true;
+  if(actual instanceof Float32Array) return true;
+  if(actual instanceof Float64Array) return true;
   assert.fail("" + actual + " is not an array.");
 }//assert.isArray
 
@@ -72,6 +81,15 @@ assert.isPositiveIntegerArray = function(x){
     assert.isPositiveInteger(value);
   });
 }//assert.isPositiveIntegerArray
+
+assert.isUint8IntegerArray = function(x) {
+  if(x.constructor.name === "Uint8Array") return;
+  if(x.constructor.name === "Uint8ClampedArray") return;
+  x.forEach(function(value,index,array) {
+    if(value > 255) assert.fail("" + value + " is larger than 255 which is not fit to 8bit unsigned integer.");
+    if(value < 0) assert.fail("" + value + " is negative which is not fit to 8bit unsigned integer.");
+  });
+}//assert.isUint8IntegerArray
 
 //if(typeof exports === "undefined") exports = {};
 //exports.assert = assert;
